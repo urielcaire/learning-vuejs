@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>VueJS - #02-03 Diretivas</title>
+    </head>
+    <body>
+        <div class="" id="app">
+            <h1 v-if="status">{{ titulo }}</h1>
+            <h1 v-else>Título Not Found(v-if v-else)</h1>
+            <p>
+                {{ conteudo }}
+            </p>
+        </div>
+        <script type="text/javascript" src="https://unpkg.com/vue"></script>
+        <script type="text/javascript">
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    status: false,
+                    titulo: "VueJS - Aula #02-03 Diretivas",
+                    conteudo: "Markups das tags de html que executam alguma ação. No VueJS, todas as diretivas devem iniciar com 'v-'."
+                }
+            });
+        </script>
+    </body>
+</html>
