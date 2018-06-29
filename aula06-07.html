@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>VueJS - #06 Diretiva v-bind</title>
+    </head>
+    <body>
+        <div class="" id="app">
+            <h1>{{ titulo }}</h1>
+            <p :style="estiloParagrafo">
+                {{ conteudo }}
+            </p>
+            <img v-bind:src="imagem" :title="tituloImagem">
+        </div>
+        <script type="text/javascript" src="https://unpkg.com/vue"></script>
+        <script type="text/javascript">
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    titulo: "VueJS - Aula #06 Diretiva v-bind",
+                    estiloParagrafo: {
+                        'font-size': '21px',
+                        'color': 'purple'
+                    },
+                    conteudo: "Diretiva v-bind: adicionando valores aos atributos das tags HTML.",
+                    imagem: "https://i.pinimg.com/originals/c0/d3/8c/c0d38c518fdbf6012e0475bb7a0598a5.gif",
+                    tituloImagem: "PRAISE THE SUN!"
+                }
+            });
+        </script>
+    </body>
+</html>
