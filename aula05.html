@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>VueJS - #05 Diretiva v-model</title>
+    </head>
+    <body>
+        <div class="" id="app">
+            <h1>{{ titulo }}</h1>
+            <p>
+                {{ conteudo }}
+            </p>
+
+            <br><br>
+            <label>Nome: </label>
+            <input type="text" v-model="nome">
+
+            <br><br>
+            <label>Email: </label>
+            <input type="email" v-model="email">
+
+            <br><br>
+            <label>Sexo: </label>
+            M: <input type="radio" value="Masculino" v-model="sexo">
+            F: <input type="radio" value="Feminino" v-model="sexo">
+
+            <br><br>
+            <label>Atividades: </label> <br>
+            <input type="checkbox" value="Jiu Jitsu" v-model="atividade">Jiu Jitsu <br>
+            <input type="checkbox" value="Programação" v-model="atividade">Programação <br>
+            <input type="checkbox" value="Video Games" v-model="atividade">Video Games <br>
+
+            <br><br>
+            <hr>
+            <ul>
+                <li>Nome: {{ nome }}</li>
+                <li>Email: {{ email }}</li>
+                <li>Sexo: {{ sexo }}</li>
+                <li>Atividade: {{ atividade }}</li>
+            </ul>
+        </div>
+        <script type="text/javascript" src="https://unpkg.com/vue"></script>
+        <script type="text/javascript">
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    titulo: "VueJS - Aula #05 Diretiva v-model",
+                    conteudo: "Diretiva v-model: reativadade em prática!",
+                    nome: "",
+                    email: "",
+                    sexo: "",
+                    atividade: []
+                }
+            });
+        </script>
+    </body>
+</html>
