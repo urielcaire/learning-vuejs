@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>VueJS - #08 Diretiva v-on</title>
+    </head>
+    <body>
+        <div class="" id="app">
+            <h1>{{ titulo }}</h1>
+            <p>
+                {{ conteudo }}
+            </p>
+            <button type="button" name="button" @click.prevent.stop="alertar()">Clique</button>
+        </div>
+        <script type="text/javascript" src="https://unpkg.com/vue"></script>
+        <script type="text/javascript">
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    titulo: "VueJS - Aula #08 Diretiva v-on [@]",
+                    conteudo: "Diretiva v-on[@]: métodos e eventos no VueJS!"
+                },
+                methods: {
+                    alertar() {
+                        alert("Ooops!");
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
