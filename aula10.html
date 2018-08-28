@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>VueJS - #10 Computed & Watch</title>
+    </head>
+    <body>
+        <div class="" id="app">
+            <h1>{{ titulo }}</h1>
+            <p>
+                {{ conteudo.computed }}
+            </p>
+            <p>
+                {{ conteudo.watch }}
+            </p>
+            <br><br>
+            <label>Nome: </label>
+            <input type="text" v-model="nome"><br>
+
+            <hr>
+            <ul>
+                <li>{{ nomeUpper }}</li>
+            </ul>
+        </div>
+        <script type="text/javascript" src="https://unpkg.com/vue"></script>
+        <script type="text/javascript">
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    titulo: "VueJS - Aula #10 Computed & Watch",
+                    conteudo: {
+                        computed: "Computed: aplica uma função ou ação à uma variável em tempo de execução.",
+                        watch: "Watch: tem como função acompanhar as mudanças em uma variável."
+                    },
+                    nome: ""
+                },
+                computed: {
+                    nomeUpper(){
+                        return this.nome.toUpperCase();
+                    }
+                },
+                watch: {
+                    nome(newValue, oldValue){
+                        console.log("newValue", newValue);
+                        console.log("oldValue", oldValue);
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
