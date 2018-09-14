@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>VueJS - #11 Lifecycle Hooks</title>
+    </head>
+    <body>
+        <div class="" id="app">
+            <h1>{{ titulo }}</h1>
+            <p>
+                {{ conteudo }}
+            </p>
+        </div>
+        <script type="text/javascript" src="https://unpkg.com/vue"></script>
+        <script type="text/javascript">
+            var app = new Vue({
+                el: "#app",
+                beforeCreate(){
+                    console.log('beforeCreate');
+                    console.log('titulo', this.titulo);
+                    console.log('el', this.$el);
+                },
+                created(){
+                    console.log('created');
+                    console.log('titulo', this.titulo);
+                    console.log('el', this.$el);
+                },
+                beforeMount(){
+                    console.log('beforeMount');
+                    console.log('titulo', this.titulo);
+                    console.log('el', this.$el);
+                },
+                mounted(){
+                    console.log('mounted');
+                    console.log('titulo', this.titulo);
+                    console.log('el', this.$el);
+                },
+                beforeUpdate(){
+                    console.log('beforeUpdate');
+                    console.log('titulo', this.titulo);
+                    console.log('el', this.$el);
+                },
+                updated(){
+                    console.log('updated');
+                    console.log('titulo', this.titulo);
+                    console.log('el', this.$el);
+                },
+                data: {
+                    titulo: "VueJS - #11 Lifecycle Hooks",
+                    conteudo: "Lifecycle Hooks: como o VuejS é funciona."
+                }
+            });
+        </script>
+    </body>
+</html>
