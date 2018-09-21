@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>VueJS - #12 Componentes</title>
+    </head>
+    <body>
+        <div class="" id="app">
+            <h1>{{ titulo }}</h1>
+            <p>
+                {{ conteudo }}
+            </p>
+            <menu-bar></menu-bar><!-- componente de menu -->
+        </div>
+        <template id="menu">
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+            </ul>
+        </template>
+        <script type="text/javascript" src="https://unpkg.com/vue"></script>
+        <script type="text/javascript">
+            //componente global
+            Vue.component('menu-bar', {
+                template: "#menu"
+            });
+
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    titulo: "VueJS - #12 Componentes",
+                    conteudo: "Componentes: códigos/instâncias reutilizáveis."
+                }
+            });
+        </script>
+    </body>
+</html>
