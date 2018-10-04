@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <title>VueJS - #14 Componentes Pais e Filhos</title>
+    </head>
+    <body>
+        <div class="" id="app">
+            <h1>{{ titulo }}</h1>
+            <p>
+                {{ conteudo }}
+            </p>
+            <navbar></navbar>
+        </div>
+        <template id="nav">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <menu-bar :items="topNav" @emit-click="getLink"></menu-bar>
+
+                </div>
+            </nav>
+        </template>
+        <template id="menu">
+            <div>
+                <ul class="navbar-nav mr-auto">
+                    <li v-for="(item, index) in items" class="nav-item">
+                        <a @click.stop.prevent="emitClick(index)" class="nav-link" href="#">{{ item.label }}</a>
+                    </li>
+                </ul>
+            </div>
+        </template>
+        <script type="text/javascript" src="https://unpkg.com/vue"></script>
+        <script type="text/javascript">
+            //componente pai
+            Vue.component('navbar', {
+                template: "#nav",
+                data(){
+                    return {
+                        topNav: [{label: 'Home'}, {label: 'Link'}, {label: 'Disabled'}]
+                    }
+                },
+                methods: {
+                    getLink(index){
+                        alert(this.topNav[index].label);
+                    }
+                }
+            });
+            //componente filho
+            Vue.component('menu-bar', {
+                template: "#menu",
+                props: {
+                    items: {
+                        type: Array,
+                        required: true
+                    }
+                },
+                methods: {
+                    emitClick(index){
+                        this.$emit('emit-click', index);
+                    }
+                }
+            });
+
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    titulo: "VueJS - #14 Componentes Pais e Filhos",
+                    conteudo: "Componentes Pais e Filhos | Transferindo dados entre componentes"
+                }
+            });
+        </script>
+    </body>
+</html>
