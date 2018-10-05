@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <title>VueJS - #16 Slots</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>{{ titulo }}</h1>
+            <p>
+                {{ conteudo }}
+            </p>
+            <div class="container">
+                <card>
+                    <h4 slot="titulo" class="card-title">Título</h4>
+                    <p slot="conteudo" class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </p>
+                    <button slot="acao" href="#" class="btn btn-primary">Botão de Ação</button>
+                </card>
+                <br>
+                <card>
+                    <h4 slot="titulo" class="card-title">Título 2</h4>
+                    <template slot="conteudo">
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </p>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </p>
+                    </template>
+                    <button slot="acao" href="#" class="btn btn-primary">Botão de Ação</button>
+                </card>
+            </div>
+        </div>
+        <template id="card">
+            <div class="card">
+                <img src="http://via.placeholder.com/850x80" class="img-responsive">
+                <div class="card-body">
+                    <slot name="titulo"></slot>
+                    <slot name="conteudo"></slot>
+                    <slot name="acao"></slot>
+                </div>
+            </div>
+        </template>
+        <script type="text/javascript" src="https://unpkg.com/vue"></script>
+        <script type="text/javascript">
+            Vue.component('card', {
+                template: "#card"
+            });
+
+            //var eventBus = new Vue();
+            Vue.prototype.$eventHub = new Vue();
+
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    titulo: "VueJS - #16 Slots",
+                    conteudo: "Slots - Blocos dinâmicos de conteúdo."
+                }
+            });
+        </script>
+    </body>
+</html>
