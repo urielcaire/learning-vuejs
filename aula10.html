@@ -25,29 +25,6 @@
             </ul>
         </div>
         <script type="text/javascript" src="https://unpkg.com/vue"></script>
-        <script type="text/javascript">
-            var app = new Vue({
-                el: "#app",
-                data: {
-                    titulo: "VueJS - Aula #10 Computed & Watch",
-                    conteudo: {
-                        computed: "Computed: aplica uma função ou ação à uma variável em tempo de execução.",
-                        watch: "Watch: tem como função acompanhar as mudanças em uma variável."
-                    },
-                    nome: ""
-                },
-                computed: {
-                    nomeUpper(){
-                        return this.nome.toUpperCase();
-                    }
-                },
-                watch: {
-                    nome(newValue, oldValue){
-                        console.log("newValue", newValue);
-                        console.log("oldValue", oldValue);
-                    }
-                }
-            });
-        </script>
+        <script type="text/javascript" src="js/aula10.js"></script>
     </body>
 </html>
