@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <title>VueJS - #21 Transições com css</title>
+        <style media="screen">
+            .fade-enter-active, .fade-leave-active{
+                transition: opacity .5s;
+            }
+            .fade-enter, .fade-leave-to{
+                opacity: 0
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <h1>{{ titulo }}</h1>
+            <p>
+                {{ conteudo }}
+            </p>
+            <br>
+            <h4>Users</h4>
+            <ul ref="users">
+                <li v-for="(item, index) in users" :key="item.name">{{ item.name }} <a href="#" @click.stop.prevent="remove(index)">X</a> </li>
+            </ul>
+            <br>
+            <select v-model="serie">
+                <option value="sons-of-anarchy">Sons of Anarchy</option>
+                <option value="mayans">Mayans MC</option>
+            </select>
+            <br>
+            <transition name="fade">
+                <component :is="serie"></component> <!-- Componente anônimo -->
+            </transition>
+        </div>
+
+        <template id="sonsOfAnarchy">
+            <div>
+                <h4>S.O.A.</h4>
+                <ul>
+                    <li v-for="(member, index) in members">{{ member.name }}</li>
+                </ul>
+            </div>
+        </template>
+        <template id="mayans">
+            <div>
+                <h4>Mayans</h4>
+                <ul>
+                    <li v-for="(member, index) in members">{{ member.name }}</li>
+                </ul>
+            </div>
+        </template>
+        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="js/aula21.js"></script>
+    </body>
+</html>
