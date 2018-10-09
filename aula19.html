@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <title>VueJS - #19 Ajax com Axios</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>{{ titulo }}</h1>
+            <p>
+                {{ conteudo }}
+            </p>
+            <button type="button" @click.stop.prevent="getUsers()" name="button">Botão</button>
+            <hr>
+            <div v-if="error.code > 0" class="alert alert-danger">
+                <h4>{{ error.code }}</h4>
+                <p>
+                    {{ error.msg }}
+                </p>
+            </div>
+            <strong v-if="loader">
+                Carregando...
+            </strong>
+            <ul>
+                <li v-for="(user, index) in users">{{ user.name }}</li>
+            </ul>
+        </div>
+        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="js/aula19.js"></script>
+    </body>
+</html>
