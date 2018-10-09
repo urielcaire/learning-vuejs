@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <title>VueJS - #20 Atributos Especiais</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>{{ titulo }}</h1>
+            <p>
+                {{ conteudo }}
+            </p>
+            <br>
+            <ul ref="users">
+                <li v-for="(item, index) in users" :key="item.name">{{ item.name }} <a href="#" @click.stop.prevent="remove(index)">X</a> </li>
+            </ul>
+            <br>
+            <component :is="serie"></component> <!-- Componente anônimo -->
+            <!-- <sons-of-anarchy v-if="serie=='sons-of-anarchy'">
+                <h4 slot="title">S.O.A.</h4>
+            </sons-of-anarchy> -->
+            <!-- <mayans v-if="serie=='mayans'"></mayans> -->
+        </div>
+
+        <template id="sonsOfAnarchy">
+            <div>
+                <!-- <slot name="title"></slot> -->
+                <h4>S.O.A.</h4>
+                <ul>
+                    <li v-for="(member, index) in members">{{ member.name }}</li>
+                </ul>
+            </div>
+        </template>
+        <template id="mayans">
+            <div>
+                <h4>Mayans</h4>
+                <ul>
+                    <li v-for="(member, index) in members">{{ member.name }}</li>
+                </ul>
+            </div>
+        </template>
+        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="js/aula20.js"></script>
+    </body>
+</html>
